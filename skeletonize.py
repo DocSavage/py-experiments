@@ -17,8 +17,9 @@ def skeletonize(idfile, server, uuid, instance: str):
     with open(idfile) as f:
         for line in f:
             bodyid = int(line)
-            subprocess.run([neutu_exe, '--command', '--skeletonize', f'--bodyid {bodyid}', '"{server}?uuid={uuid}&segmentation={instance}"'])
-            sys.exit(0)
+            cmd = f'bsub -n 2 -P flyem {neutu_exe} --command --skeletonize --bodyid {bodyid} {server}?uuid={uuid}&segmentation={instance}'
+            print(cmd)
+            subprocess.run(cmd.split())
 
 if __name__ == '__main__':
     typer.run(skeletonize)
