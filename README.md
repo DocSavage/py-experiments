@@ -3,11 +3,19 @@ Experiments using python stack with taichi and tensorstore / brainmaps / DVID so
 ### Setup
 
 Base conda with python 3.10
+
+Make sure you have the most recent conda then install libmamba solver
 ```
+conda update -n base conda
 conda install -n base conda-libmamba-solver
 conda config --set solver libmamba
+```
+
+Activate your conda env of choice, then install:
+```
 conda install -c conda-forge jupyterlab
 conda install ipykernel
+conda install typer
 # conda install pytorch from website
 pip install tensorstore
 pip install taichi
